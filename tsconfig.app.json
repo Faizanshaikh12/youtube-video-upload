@@ -3,7 +3,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "module": "es2015",
+    "types": ["gapi.auth2"]
+
   },
   "files": [
     "src/main.ts",

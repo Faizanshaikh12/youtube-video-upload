@@ -1,0 +1,46 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px" style="margin-top: 3%">
+  <h1>Select a video from your computer</h1>
+  <p>(Upload your video to add it in Resume)</p>
+  <div *ngIf="!this.videoSelected" fxLayout="row" fxLayoutAlign="center center" style="margin-top: 30px">
+    <input #videoFile name="video" type="file" accept="video/*" (change)="this.selectVideo($event)" hidden>
+    <button mat-raised-button color="primary" (click)="pickFile()">
+      <mat-icon>add</mat-icon>
+      SELECT
+    </button>
+  </div>
+  <div [hidden]="!this.videoSelected">
+    <video *ngIf="!this.isUploaded" id="video" controls #video>
+      Your Browser does not support it
+    </video>
+<!--    <iframe *ngIf="this.isUploaded" [src]="this.url" #iframe-->
+<!--            width="120%" height="240px" frameborder="0" class="res-upload-video" allowfullscreen="true">-->
+<!--    </iframe>-->
+  </div>
+  <div *ngIf="this.videoSelected" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+<!--    <button *ngIf="this.isUploaded" mat-raised-button color="primary" (click)="deleteVideo()">-->
+<!--      Delete Video-->
+<!--    </button>-->
+    <button *ngIf="!this.isUploaded" mat-raised-button color="primary" (click)="youtubeSubmit()">
+      UPLOAD TO YOUTUBE
+    </button>
+
+    <input #videoFile name="video" type="file" accept="video/*" (change)="this.selectVideo($event)" hidden>
+    <button mat-raised-button color="primary" (click)="pickFile()">
+      <mat-icon>cached</mat-icon>
+      CHANGE
+    </button>
+
+  </div>
+</div>
+
+
+<style>
+  h1{
+    color: #538ec3;
+    text-align: center;
+  }
+
+  #video{
+    width: 330px;
+  }
+</style>
